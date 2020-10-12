@@ -1,21 +1,26 @@
-//import TerminusClient from "@terminusdb/terminusdb-client"
 import { writable } from 'svelte/store'
 import App from './App.svelte'
+import { state, create, alter, remove } from './terminusdb.js'
 
-const todos = writable([
-  { id: 1, title: "Taste Javascript", completed: true },
-  { id: 2, title: "Buy a unicorn", completed: false }
-])
+const { subscribe, set, update } = writable([])
 
-todos.subscribe(items => {
-  console.log('boom')
-  console.log('items', items)
-})
+const todos = {
+  subscribe, set, update,
+  create, alter, remove
+}
 
 const app = new App({
   target: document.querySelector('.todoapp'),
   props: {
-    todos: todos
+    todos
+  }
+})
+
+console.log('state set')
+state((err, data) => {
+  if (err) console.log('read error', err)
+  else {
+    todos.set(data)
   }
 })
 

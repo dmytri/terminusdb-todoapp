@@ -1,6 +1,9 @@
 import svelte from 'rollup-plugin-svelte';
 import copy from 'rollup-plugin-copy';
+import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
+import globals from 'rollup-plugin-node-globals';
+import builtins from 'rollup-plugin-node-builtins';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
@@ -61,9 +64,13 @@ export default {
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
 		resolve({
 			browser: true,
-			dedupe: ['svelte']
+			dedupe: ['svelte', '@terminusdb/terminusdb-client']
 		}),
 		commonjs(),
+    // node builtins
+    json(),
+    globals(),
+    builtins(),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated

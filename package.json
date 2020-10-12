@@ -18,7 +18,10 @@
     "todomvc-app-css": "^2.3.0"
   },
   "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "@terminusdb/terminusdb-client": "^3.0.6",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
     "sirv-cli": "^1.0.0"
   }
 }
