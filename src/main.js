@@ -1,14 +1,22 @@
+// Import Svelte writable store
 import { writable } from 'svelte/store'
-import App from './App.svelte'
+
+// Import methods database methods
 import { state, create, alter, remove } from './terminusdb.js'
 
+import App from './App.svelte'
+
+// Create a Svelte Writable Store
 const { subscribe, set, update } = writable([])
 
+
+// Make a custom Svelte store with database methods 
 const todos = {
   subscribe, set, update,
   create, alter, remove
 }
 
+// Initialize a Svelte app and attach to DOM
 const app = new App({
   target: document.querySelector('.todoapp'),
   props: {
@@ -16,7 +24,7 @@ const app = new App({
   }
 })
 
-console.log('state set')
+// Load state from Database
 state((err, data) => {
   if (err) console.log('read error', err)
   else {
