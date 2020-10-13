@@ -1,5 +1,6 @@
 <script>
 import List from "./List.svelte"
+import Item from "./Item.svelte"
 import Footer from "./Footer.svelte"
 
 export let todos
@@ -68,19 +69,34 @@ $: {
 }
 
 </script>
-<header class="header">
-  <h1>todos</h1>
-  <input class="new-todo" placeholder="What needs to be done?"
-    on:keydown="{ keydown }">
-</header>
 {#if $todos.length > 0}
-<section class="main">
-  <List items="{ items }" remove="{ remove }" toggle="{ toggle }"
-    change="{ change }"/>
-</section>
-<Footer view="{ setView }"
-  remaining="{ remaining.length }" completed="{ completed.length }"
-  clear="{ clear }" />
+<List
+  items="{ items }"
+  toggle="{ toggle }"
+  let:item>
+  <div slot="header">
+    <header class="header">
+      <h1>todos</h1>
+      <input
+        class="new-todo"
+        placeholder="What needs to be done?"
+        on:keydown="{ keydown }">
+    </header>
+  </div>
+  <div slot="list">
+    <Item
+      item="{ item }"
+      change="{ change }"
+      remove="{ remove }" />
+  </div>
+  <div slot="footer">
+    <Footer
+      view="{ setView }"
+      remaining="{ remaining.length }"
+      completed="{ completed.length }"
+      clear="{ clear }" />
+  </div>
+</List>
 {/if}
 
 <!-- vim: set ft=html: -->

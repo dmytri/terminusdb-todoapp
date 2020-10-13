@@ -9,20 +9,25 @@
       event.target.blur()
     }
   }
+
   const save = (event) => {
     editing = false
   }
+
   const focus = (node) => {
     node.focus()
   }
 </script>
 <li class="{ item.completed ? 'completed' : '' } { editing ? 'editing' : ''}">
   <div class="view">
-    <input id="{ item.id }"
-      class="toggle" type="checkbox" bind:checked="{ item.completed }"
+    <input
+      id="{ item.id }"
+      class="toggle"
+      type="checkbox"
       data-id="{ item.id }"
       data-key="completed"
       data-value="{ item.completed }"
+      bind:checked="{ item.completed }"
       on:change="{ change }">
     <label for="{ item.id }"
       on:dblclick="{ () => editing = true }">{ item.title }</label>
