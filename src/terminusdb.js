@@ -3,10 +3,26 @@ const Client = require("@terminusdb/terminusdb-client")
 
 // Instantiate database client
 const DB = new Client.WOQLClient("https://127.0.0.1:6363/", {
-  dbid: "TodoMVC",
   user: "admin",
   key: "root",
 })
+
+// Create DB
+/* DB.createDatabase('TodoMVC', { 
+    label: 'TodoMVC', base_uri: 'todomvc', 
+    comment:'DB for TodoMVC backend' },
+    'admin')
+  .then(resonse => {
+    console.log('response', response)
+  })
+  .catch(error => {
+      if (error.data['api:error']['@type']
+        === 'api:DatabaseAlreadyExists') {
+        console.log('all good')
+      } else {
+        console.log(JSON.stringify(error.data['api:error']))
+      }
+  }) */
 
 // Set organization and database name
 DB.organization("admin")
@@ -17,7 +33,6 @@ DB.connect()
  .catch((error) => {
     console.log('error', error)
   })
-
 
 // Assign query builder to Q
 const Q = Client.WOQL
