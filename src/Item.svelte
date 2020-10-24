@@ -107,13 +107,24 @@ li.editing:last-child {
 	margin-bottom: -1px;
 }
 
-button {
-	color: #333;
-	background-color: #f4f4f4;
-	outline: none;
-}
 
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
 </style>
+
 <script>
   export let item
   export let remove
@@ -134,6 +145,7 @@ button {
     node.focus()
   }
 </script>
+
 <li class="{ item.completed ? 'completed' : '' } { editing ? 'editing' : ''}">
   <div class="view">
     <input
@@ -147,7 +159,10 @@ button {
       on:change="{ change }">
     <label for="{ item.id }"
       on:dblclick="{ () => editing = true }">{ item.title }</label>
-    <button on:click="{ remove }" class="destroy"></button>
+    <button 
+      data-id="{ item.id }"
+      on:click="{ remove }"
+      class="destroy"></button>
   </div>
   {#if editing }
   <input 

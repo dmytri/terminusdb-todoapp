@@ -1,5 +1,5 @@
 /**
- * @module TerminuDB
+ * @module TerminusDB
  * @description TerminusDB TodoMVC Methods
  */
 
@@ -93,8 +93,19 @@ function alter (data) {
 */
 function remove (data) {
   DB.query(Q
-    .triple(data.id, 'v:Subject', 'v:Object')
-    .delete_triple(data.id, 'v:Subject', 'v:Object')
+    .triple(data.id, 'v:Predicate', 'v:Object')
+    .delete_triple(data.id, 'v:Predicate', 'v:Object')
+  )
+}
+
+/**
+ * Clear Completed Todos
+*/
+function clear () {
+  DB.query(Q
+    .triple('v:Id', 'completed', Q.literal(true, 'boolean'))
+    .triple('v:Id', 'v:Predicate', 'v:Object')
+    .delete_triple('v:Id', 'v:Predicate', 'v:Object')
   )
 }
 
@@ -134,4 +145,4 @@ function state (callback) {
 }
 
 // Export database methods
-module.exports = { state, create, alter, remove }
+module.exports = { state, create, alter, remove, clear }

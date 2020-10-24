@@ -7,7 +7,7 @@
 import { writable } from 'svelte/store'
 
 // Import methods database methods
-import { state, create, alter, remove } from './terminusdb.js'
+import { state, create, alter, remove, clear } from './terminusdb.js'
 
 import App from './App.svelte'
 
@@ -21,7 +21,8 @@ const todos = {
   update,
   create,
   alter,
-  remove
+  remove,
+  clear
 }
 
 // Initialize a Svelte app and attach to DOM

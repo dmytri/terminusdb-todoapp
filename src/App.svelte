@@ -130,20 +130,9 @@ const keydown = (event) => {
   }
 }
 
-const remove = (index) => {
-  return () => { 
-    todos.remove($todos[index])
-    $todos = $todos.slice(0, index).concat($todos.slice(index + 1))
-  }
-}
-
-function action(node) {
-	return {
-		destroy() {
-			console.log('remove', node.dataset.id)
-			todos.remove({id: node.dataset.id})
-		}
-	}
+const remove = (node) => {
+  todos.remove({id: node.target.dataset.id})
+  $todos = $todos.filter(item => item.id !== node.target.dataset.id)
 }
 
 const toggle = (event) => {
@@ -155,7 +144,8 @@ const toggle = (event) => {
 }
 
 const clear = () => {
-  $todos = $todos.filter(item => !item.completed);
+  todos.clear()
+  $todos = $todos.filter(item => !item.completed)
 }
 
 let view = 'all'
@@ -185,7 +175,6 @@ $: {
 </script>
 
 <section class="todoapp">
-{#if $todos.length > 0}
 <List
   items="{ items }"
   toggle="{ toggle }"
@@ -200,22 +189,22 @@ $: {
     </header>
   </div>
   <div slot="list"
-	data-id="{ item.id }"
-  	use:action>
+    data-id="{ item.id }">
     <Item
       item="{ item }"
       change="{ change }"
-	  remove="{ remove }" />
+	    remove="{ remove }" />
   </div>
   <div slot="footer">
+    {#if $todos.length > 0}
     <Footer
       view="{ setView }"
       remaining="{ remaining.length }"
       completed="{ completed.length }"
       clear="{ clear }" />
+    {/if}
   </div>
 </List>
-{/if}
 </section>
 
 <footer class="info">
