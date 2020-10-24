@@ -184,7 +184,7 @@ $: {
       <h1>todos</h1>
       <input
         class="new-todo"
-        placeholder="What needs to be done?"
+        placeholder="What is to be done?"
         on:keydown="{ keydown }">
     </header>
   </div>
