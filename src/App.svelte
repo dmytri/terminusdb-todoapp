@@ -131,11 +131,12 @@ const keydown = (event) => {
 }
 
 const remove = (node) => {
-  todos.remove({id: node.target.dataset.id})
+  todos.remove({ id: node.target.dataset.id })
   $todos = $todos.filter(item => item.id !== node.target.dataset.id)
 }
 
 const toggle = (event) => {
+  todos.toggle({ completed: event.target.checked })
   $todos = $todos.map((item) => ({
     id: item.id,
     title: item.title,

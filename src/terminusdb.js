@@ -99,6 +99,22 @@ function remove (data) {
 }
 
 /**
+ * Toggle All Todos
+ *
+ * @param {Object} data
+ * @param {boolean} data.completed Todo completed
+*/
+
+function toggle (data) {
+  console.log('data', data)
+  DB.query(Q
+    .triple('v:Id', 'completed', Q.literal(!data.completed, 'boolean'))
+    .delete_triple('v:Id', 'completed', Q.literal(!data.completed, 'boolean'))
+    .add_triple('v:Id', 'completed', Q.literal(data.completed, 'boolean'))
+  )
+}
+
+/**
  * Clear Completed Todos
 */
 function clear () {
@@ -145,4 +161,4 @@ function state (callback) {
 }
 
 // Export database methods
-module.exports = { state, create, alter, remove, clear }
+module.exports = { state, create, alter, remove, toggle, clear }
