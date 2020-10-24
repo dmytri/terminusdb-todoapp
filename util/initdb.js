@@ -81,7 +81,7 @@ const hasSchema = () => {
 // Create some example Todos
 const addExamples = () => {
   console.log('# add todo1')
-  // add example Todo 'Taste TerminusDB' 
+  // add example Todo 'Taste TerminusDB'
   // set completed to true
   DB.query(Q
     .add_triple('doc:todo1', 'type', 'scm:Todo')
@@ -91,7 +91,7 @@ const addExamples = () => {
       Q.literal(true, 'boolean'))
   ).then(() => {
     console.log('# add todo2')
-    // add example Todo 'Buy a camel' 
+    // add example Todo 'Buy a camel'
     // set completed to false
     DB.query(Q
       .add_triple('doc:todo2', 'type', 'scm:Todo')

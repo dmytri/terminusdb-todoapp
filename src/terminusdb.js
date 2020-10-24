@@ -1,81 +1,120 @@
+/**
+ * @module TerminuDB
+ * @description TerminusDB TodoMVC Methods
+ */
+
 // Require TerminusDB Client
-const Client = require("@terminusdb/terminusdb-client")
+const Client = require('@terminusdb/terminusdb-client')
 
 // Instantiate database client
-const DB = new Client.WOQLClient("https://127.0.0.1:6363/", {
-  user: "admin",
-  key: "root",
+const DB = new Client.WOQLClient('https://127.0.0.1:6363/', {
+  user: 'admin',
+  key: 'root'
 })
 
-// Create DB
-/* DB.createDatabase('TodoMVC', { 
-    label: 'TodoMVC', base_uri: 'todomvc', 
-    comment:'DB for TodoMVC backend' },
-    'admin')
-  .then(resonse => {
-    console.log('response', response)
-  })
-  .catch(error => {
-      if (error.data['api:error']['@type']
-        === 'api:DatabaseAlreadyExists') {
-        console.log('all good')
-      } else {
-        console.log(JSON.stringify(error.data['api:error']))
-      }
-  }) */
-
 // Set organization and database name
-DB.organization("admin")
-DB.db("TodoMVC")
+DB.organization('admin')
+DB.db('TodoMVC')
 
 // Connect to database
 DB.connect()
- .catch((error) => {
+  .catch((error) => {
     console.log('error', error)
   })
 
 // Assign query builder to Q
 const Q = Client.WOQL
 
-// Create a Todo
-const create = (data) => {
+/**
+ * @typedef {Object} TodoCreated Todo Created
+ * @property {string} TodoCreated.id Todo ID
+ * @property {string} TodoCreated.title Todo Title
+ */
+
+/**
+ * Create Todo
+ * @param {TodoCreated} todo Todo Created
+ * @example
+ * create({
+ *  id: "doc:todo1",
+ *  title: "Taste TerminusDB"
+ * })
+ */
+function create (todo) {
   DB.query(Q
-    .add_triple(data.id, 'type','scm:Todo') 
-    .add_triple(data.id, 'title',
-      Q.literal(data.title, 'string'))
-    .add_triple(data.id, 'completed',
-      Q.literal(false,'boolean'))
+    .add_triple(todo.id, 'type', 'scm:Todo')
+    .add_triple(todo.id, 'title',
+      Q.literal(todo.title, 'string'))
+    .add_triple(todo.id, 'completed',
+      Q.literal(false, 'boolean'))
   )
 }
 
-// Update a Todo
-const alter = (data) => {
-  console.log('alter',data)
+/**
+ * @typedef {Object} TodoAlteredTitle Todo Title Altered
+ * @property {'title'} TodoAlteredTitle.key string "title"
+ * @property {string} TodoAlteredTitle.value Todo Title
+ * @property {string} TodoAlteredTitle.id Todo Document Id to Alter
+ */
+
+/**
+ * @typedef {Object} TodoAlteredCompleted Todo Completed Altered
+ * @property {'completed'} TodoAlteredCompleted.key string "completed"
+ * @property {boolean} TodoAlteredCompleted.value Todo Completed
+ * @property {string} TodoAlteredCompleted.id Todo Document Id to Alter
+ */
+
+/**
+ * Alter Todo
+ *
+ * @param {(TodoAlteredTitle|TodoAlteredCompleted)} data Todo Title or Completed Alteration
+ */
+function alter (data) {
+  console.log('alter', data)
   DB.query(Q
-    .triple(data.id, data.key, 'v:Value') 
+    .triple(data.id, data.key, 'v:Value')
     .delete_triple(data.id, data.key, 'v:Value')
     .add_triple(data.id, data.key,
       data.key === 'completed'
-      ? Q.literal(data.value, 'boolean') 
-      : Q.literal(data.value, 'string') 
+        ? Q.literal(data.value, 'boolean')
+        : Q.literal(data.value, 'string')
     )
   )
-  .catch((error) => {
-    console.log('alter error', error, data)
-  })
+    .catch((error) => {
+      console.log('alter error', error, data)
+    })
 }
 
-// Remove a Todo
-const remove = (data) => {
+/**
+ * Remove Todo
+ *
+ * @param {Object} data
+ * @param {string} data.id Todo ID
+*/
+function remove (data) {
   DB.query(Q
-    .delete_object(data.id, 'type','scm:Todo') 
+    .triple(data.id, 'v:Subject', 'v:Object')
+    .delete_triple(data.id, 'v:Subject', 'v:Object')
   )
 }
 
-// Read state from database
-const state = (callback) => {
+/**
+ * Response Callback
+ *
+ * @callback callback
+ * @param {Error} error Error Object
+ * @Param {Array} response Response Array
+ */
+
+/**
+ * Get all Todos
+ *
+ * @param {callback} callback callback to recieve state
+ */
+
+function state (callback) {
   DB.query(Q
-    .triple('v:Doc','type','scm:Todo')
+    .triple('v:Doc', 'type', 'scm:Todo')
     .triple('v:Doc', 'scm:title', 'v:Title')
     .triple('v:Doc', 'scm:completed', 'v:Completed')
   ).then((response) => {
@@ -89,9 +128,9 @@ const state = (callback) => {
       }))
     )
   })
-  .catch((error) => {
-    callback(error)
-  })
+    .catch((error) => {
+      callback(error)
+    })
 }
 
 // Export database methods

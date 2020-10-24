@@ -77,7 +77,7 @@ button {
 }
 
 .clear-completed,
-html .clear-completed:active {
+.clear-completed:active {
 	float: right;
 	position: relative;
 	line-height: 20px;

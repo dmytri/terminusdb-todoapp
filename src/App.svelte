@@ -1,10 +1,11 @@
 <style>
-html,
-body {
+:global(html),
+:global(body) {
 	margin: 0;
 	padding: 0;
 }
-body {
+
+:global(body) {
 	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	line-height: 1.4em;
 	background: #f5f5f5;
@@ -16,12 +17,47 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	font-weight: 300;
 }
-:focus {
-	outline: 0;
+
+.todoapp {
+	background: #fff;
+	margin: 130px 0 40px 0;
+	position: relative;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
-.new-todo,
-.edit {
+.todoapp input::-webkit-input-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: rgba(0, 0, 0, 0.4);
+}
+
+.todoapp input::-moz-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: rgba(0, 0, 0, 0.4);
+}
+
+.todoapp input::input-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: rgba(0, 0, 0, 0.4);
+}
+
+.todoapp h1 {
+	position: absolute;
+	top: -140px;
+	width: 100%;
+	font-size: 80px;
+	font-weight: 200;
+	text-align: center;
+	color: #b83f45;
+	-webkit-text-rendering: optimizeLegibility;
+	-moz-text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
+}
+
+.new-todo {
 	position: relative;
 	margin: 0;
 	width: 100%;
@@ -37,13 +73,37 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 .new-todo {
 	padding: 16px 16px 16px 60px;
 	border: none;
 	background: rgba(0, 0, 0, 0.003);
 	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 }
+
+.info {
+	margin: 65px auto 0;
+	color: #4d4d4d;
+	font-size: 11px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	text-align: center;
+}
+
+.info p {
+	line-height: 1;
+}
+
+.info a {
+	color: inherit;
+	text-decoration: none;
+	font-weight: 400;
+}
+
+.info a:hover {
+	text-decoration: underline;
+}
 </style>
+
 <script>
 import List from "./List.svelte"
 import Item from "./Item.svelte"
@@ -75,6 +135,15 @@ const remove = (index) => {
     todos.remove($todos[index])
     $todos = $todos.slice(0, index).concat($todos.slice(index + 1))
   }
+}
+
+function action(node) {
+	return {
+		destroy() {
+			console.log('remove', node.dataset.id)
+			todos.remove({id: node.dataset.id})
+		}
+	}
 }
 
 const toggle = (event) => {
@@ -113,8 +182,9 @@ $: {
 			? completed
 			: remaining
 }
-
 </script>
+
+<section class="todoapp">
 {#if $todos.length > 0}
 <List
   items="{ items }"
@@ -129,11 +199,13 @@ $: {
         on:keydown="{ keydown }">
     </header>
   </div>
-  <div slot="list">
+  <div slot="list"
+	data-id="{ item.id }"
+  	use:action>
     <Item
       item="{ item }"
       change="{ change }"
-      remove="{ remove }" />
+	  remove="{ remove }" />
   </div>
   <div slot="footer">
     <Footer
@@ -144,5 +216,14 @@ $: {
   </div>
 </List>
 {/if}
+</section>
+
+<footer class="info">
+  <p>Double-click to edit a todo</p>
+  <!-- Change this out with your name and url ↓ -->
+  <p>Created by
+    <a href="http://twitter.com/dmytri">Dmytri Kleiner</a></p>
+  <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
 
 <!-- vim: set ft=html: -->
