@@ -62,7 +62,7 @@ I'll spare you the details of npm and Svelte, please see the excellent
 documentation from those projects to learn more, and will focus on the
 TerminusDB stuff.
 
-Using Svelte we created a JavaScript Single Page Application (SPA) that
+Using Svelte I created a JavaScript Single Page Application (SPA) that
 implements the specifications of TodoMVC, a project used to compare frontend
 frameworks.
 
