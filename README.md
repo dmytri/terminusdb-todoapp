@@ -274,7 +274,7 @@ title, this means I know the *subject*, `doc:todo1` and the *predicate*
 
 So I say this:
 
-```
+``` javascript
 triple('doc:todo1', 'scm:title', 'v:Doc')
 ```
 
@@ -288,7 +288,7 @@ don't know the document Id.
 
 Now we say this:
 
-```
+``` javascript
 triple('v:Doc', 'scm:title', 'Taste TerminusDB')
 ```
 
@@ -363,7 +363,7 @@ app are possible, but let's leave that for another time.
 Mediate on triples and unification. It is the path to Terminatordom.
 
 You are now ready to dive into the source code and play in the TerminusDB
-console. Feel free to come to our Discord channel, we'd love to help you and
+console. Feel free to come to our [Discord server](https://discord.gg/Gvdqw97) we'd love to help you and
 get your feedback.
 
 #### So, I guess this is just hypothetical, you wouldn't really build a Todo app with TerminusDB?
@@ -416,17 +416,17 @@ TerminusDB and TerminusHub they could just clone or fork their own copy of the
 data, merge in new updates whenever they like, and even push back changes if
 they somehow enrich the data.
 
-And last but not least, there is the issues I cover in Continuous Everything as
-Code, your devs may be changing your schema, and sometimes your data with each
+And last but not least, there is the issues I cover in [Continuous Everything as
+Code](https://terminusdb.com/blog/2020/05/29/continuous-everything-as-code/), your devs may be changing your schema, and sometimes your data with each
 revision of the software that powers your app, and these changes need to go
 down your integration and deployment pipeline, yet other databases don't work
 will with ci/cd. TerminusDB and TerminusHub make it much easier to clone, fork,
 and merge databases to create development, staging and production environments
 and push changes between them.
 
-Surely, all these benefits are worth the effort to learn to think in triples,
-weather you are building an ML/AI skynet, or a humble productivity app, content
-site or e-shop.
+Surely, whether you are building an ML/AI skynet, or a humble productivity app,
+content site or e-shop, all these benefits are worth the effort to learn to
+think in triples.
 
 
 
