@@ -75,7 +75,7 @@ SDK](https://www.npmjs.com/package/@terminusdb/terminusdb-client)
 ### So, how does that initdb bit do its thing?
 
 I will only give a few important examples from the init script here, you can
-see the entire script with comments here: [src/utils/initdb.js](src/utils/initdb.js)
+see the entire script with comments here: [util/initdb.js](util/initdb.js)
 
 First we use the JavaScript SDK to connect to the Database.
 
