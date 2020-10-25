@@ -1,4 +1,4 @@
-o TerminusDB TodoMVC (feat. Svelte)
+# TerminusDB TodoMVC (feat. Svelte)
 
 ``` ascii
  _____                   _                 ____  ____   _____         _       
