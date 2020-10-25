@@ -1,5 +1,4 @@
-# TerminusDB TodoMVC (feat. Svelte)
-
+o TerminusDB TodoMVC (feat. Svelte)
 
 ``` ascii
  _____                   _                 ____  ____   _____         _       
@@ -372,7 +371,7 @@ Well, not so fast. I mean, certainly you don't need TerminusDB to make
 a TodoMVC example, just dumping objects into the browser's local storage would
 do just fine. And it's true that most users of TerminusDB today are using it in
 DataOps/MLops scenarios, where data scientists and analysts are involved. It's
-roots are very much being database for data people.
+roots are very much in being database for data people.
 
 But if you wanted to disrupt the Todo industry with a breakthrough app, then
 yeah, you would want to use TermninusDB for your Todo app.
