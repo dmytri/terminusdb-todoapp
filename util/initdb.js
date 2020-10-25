@@ -3,11 +3,7 @@ const Client = require('@terminusdb/terminusdb-client')
 
 // Instantiate database client
 const DB = new Client.WOQLClient('https://127.0.0.1:6363/',
-  { user: 'admin', key: 'root' }
-)
-
-// create Q alias to build queries
-const Q = Client.WOQL
+  { user: 'admin', key: 'root' })
 
 // organization is like user here
 DB.organization('admin')
@@ -16,6 +12,9 @@ DB.organization('admin')
 DB.connect()
   .then(() => hasDB())
   .catch(error => console.log('error', error))
+
+// create Q alias to build queries
+const Q = Client.WOQL
 
 // check for DB, create if missing
 const hasDB = () => {
@@ -35,8 +34,7 @@ const hasDB = () => {
         label: 'TodoMVC',
         comment: 'DB for TodoMVC backend',
         schema: true
-      },
-      'admin')
+      }, 'admin')
         .then(() => hasSchema())
     } else {
       console.log('# has db')

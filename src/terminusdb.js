@@ -108,9 +108,9 @@ function remove (data) {
 function toggle (data) {
   console.log('data', data)
   DB.query(Q
-    .triple('v:Id', 'completed', Q.literal(!data.completed, 'boolean'))
-    .delete_triple('v:Id', 'completed', Q.literal(!data.completed, 'boolean'))
-    .add_triple('v:Id', 'completed', Q.literal(data.completed, 'boolean'))
+    .triple('v:Doc', 'completed', Q.literal(!data.completed, 'boolean'))
+    .delete_triple('v:Doc', 'completed', Q.literal(!data.completed, 'boolean'))
+    .add_triple('v:Doc', 'completed', Q.literal(data.completed, 'boolean'))
   )
 }
 
@@ -119,9 +119,9 @@ function toggle (data) {
 */
 function clear () {
   DB.query(Q
-    .triple('v:Id', 'completed', Q.literal(true, 'boolean'))
-    .triple('v:Id', 'v:Predicate', 'v:Object')
-    .delete_triple('v:Id', 'v:Predicate', 'v:Object')
+    .triple('v:Doc', 'completed', Q.literal(true, 'boolean'))
+    .triple('v:Doc', 'v:Predicate', 'v:Object')
+    .delete_triple('v:Doc', 'v:Predicate', 'v:Object')
   )
 }
 
