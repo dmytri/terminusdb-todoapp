@@ -242,8 +242,8 @@ statement will solve for all triples in the database that have the `type`
 Our SDK uses a *fluent* style, so the query continues with the next triple
 statement, which says that for each possible value of `v:Doc` from the previous
 statement, find a triple that has the same *subject* and a *predicate* of
-`scm:title` (think property called title) and assign to the object (think value
-the value of the property) to the variable `v:Title`. 
+`scm:title` (think property called title) and assign to the object (think the
+value of the property) to the variable `v:Title`. 
 
 The next triple statement does the same thing but for the *predicate* `scm:completed`.
 
