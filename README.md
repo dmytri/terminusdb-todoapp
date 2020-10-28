@@ -267,7 +267,7 @@ Meditate on triples and unification. It is the path to Terminatordom.
 
 You are now ready to dive into the source code and play in the TerminusDB console. Feel free to come to our [Discord server](https://discord.gg/Gvdqw97) we'd love to help you and get your feedback.
 
-#### So, I guess this is just hypothetical, you wouldn't really build a Todo app with TerminusDB?
+## So, I guess this is just hypothetical, you wouldn't really build a Todo app with TerminusDB?
 
 Well, not so fast. Certainly you don't need TerminusDB to make a TodoMVC example, just dumping objects into the browser's local storage would do just fine. And it's true that most users of TerminusDB today are using it in DataOps/MLops scenarios, where data scientists and analysts are involved. It's roots are very much in being a database for data people.
 
