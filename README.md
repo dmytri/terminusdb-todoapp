@@ -1,3 +1,9 @@
+---
+description: >-
+  In which a Todo application is made following the TodoMVC specification which
+  uses
+---
+
 # TerminusDB TodoMVC \(feat. Svelte\)
 
 ```text
@@ -10,7 +16,7 @@
 
 ## What is this?
 
-This is a simple example of making a typical web app with TerminusDB. This example implements [TodoMVC](http://todomvc.com) with [Svelte](https://svelte.dev), and then uses TerminusDB to store the Todo list.
+This is a simple example of making a typical web app with [TerminusDB](https://terminusdb.com). This example implements [TodoMVC](http://todomvc.com) with [Svelte](https://svelte.dev), and then uses TerminusDB to store the Todo list.
 
 Please [install TerminusDB](https://terminusdb.com/hub/download) and have it running. TerminusDB just needs to be running, you will not be using the console right now, so you can just minimize it.
 
