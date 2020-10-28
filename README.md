@@ -1,9 +1,3 @@
----
-description: >-
-  In which a Todo application is made following the TodoMVC specification which
-  uses TerminusDB to store its data.
----
-
 # TerminusDB TodoMVC \(feat. Svelte\)
 
 ```text
