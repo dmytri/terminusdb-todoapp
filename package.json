@@ -9,11 +9,10 @@
     "initdb": "node util/initdb.js"
   },
   "devDependencies": {
+    "@gitbook-ng/gitbook": "^3.3.6",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
-    "docdash": "^1.2.0",
-    "jsdoc": "^3.6.6",
     "jsdoc-to-markdown": "^6.0.1",
     "rollup": "^2.3.4",
     "rollup-plugin-copy": "^3.3.0",

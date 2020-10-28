@@ -48,7 +48,7 @@ $ npm install && npm run dev
 
 You can access the Todo app on [http://127.0.0.1:5000](http://127.0.0.1:5000) and, you know, do stuff.
 
-![TerminusDB Todo](.gitbook/assets/todomvc.png)
+![TerminusDB Todo](todomvc.png)
 
 ## Ok, so how does that all work?
 
