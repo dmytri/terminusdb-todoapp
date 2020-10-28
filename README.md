@@ -60,7 +60,7 @@ The SPA runs in the browser and uses TerminusDB as the backend, as TerminusDB is
 
 ### So, how does that initdb bit do its thing?
 
-I will only give a few important examples from the initdb script here, you can see the entire script with comments here: [util/initdb.js](https://github.com/dmytri/terminusdb-todoapp/tree/9809d2f4d7d28762d9d46175bc38a54db0c8dd11/util/initdb.js)
+We will only give a few important examples from the initdb script here, you can see the entire script with comments here: [util/initdb.js](https://github.com/dmytri/terminusdb-todoapp/tree/9809d2f4d7d28762d9d46175bc38a54db0c8dd11/util/initdb.js)
 
 First we use the JavaScript SDK to connect to the Database.
 
@@ -203,9 +203,9 @@ Triple statements are not functions, and the three values are not arguments. You
 
 Ok, so before you think I'm wasting your time with profound sounding bullshit, let me give you some more examples that are not used in this app.
 
-Say I know the document Id of a Todo, say `doc:todo1`, but want to know it's title, this means I know the _subject_, `doc:todo1` and the _predicate_ `scm:title`, but not the _object_, the string which contains the title
+Say we know the document Id of a Todo, say `doc:todo1`, but want to know it's title, this means we know the _subject_, `doc:todo1` and the _predicate_ `scm:title`, but not the _object_, the string which contains the title
 
-So I say this:
+So we say this:
 
 ```javascript
 triple('doc:todo1', 'scm:title', 'v:Doc')
@@ -269,7 +269,7 @@ You are now ready to dive into the source code and play in the TerminusDB consol
 
 #### So, I guess this is just hypothetical, you wouldn't really build a Todo app with TerminusDB?
 
-Well, not so fast. I mean, certainly you don't need TerminusDB to make a TodoMVC example, just dumping objects into the browser's local storage would do just fine. And it's true that most users of TerminusDB today are using it in DataOps/MLops scenarios, where data scientists and analysts are involved. It's roots are very much in being a database for data people.
+Well, not so fast. Certainly you don't need TerminusDB to make a TodoMVC example, just dumping objects into the browser's local storage would do just fine. And it's true that most users of TerminusDB today are using it in DataOps/MLops scenarios, where data scientists and analysts are involved. It's roots are very much in being a database for data people.
 
 However, if you wanted to really disrupt the Todo industry with a breakthrough app, then yeah, you would want to use TermninusDB for your Todo app.
 
