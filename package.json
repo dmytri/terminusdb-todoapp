@@ -2,15 +2,12 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "docs": "gitbook build",
-    "docs:serve": "gitbook serve",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
     "initdb": "node util/initdb.js"
   },
   "devDependencies": {
-    "@gitbook-ng/gitbook": "^3.3.6",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
