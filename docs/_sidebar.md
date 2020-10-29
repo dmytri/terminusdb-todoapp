@@ -1,8 +1,8 @@
-# Tutorialog
+- Tutorialog
+  - [README.md](README.md)
+- Annotated Source
+  - [main.js](api/src/main.md)
+  - [terminusdb.js](api/src/terminusdb.md)
+- API Documentation
+  - [terminusdb.js](api/terminusdb.js.md)
 
-- [README.md](README.md)
-
-## API
-
-- [terminusdb.js](api/terminusdb.js.md)
-- [main.js](api/main.js.md)

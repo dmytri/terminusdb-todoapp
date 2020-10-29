@@ -24,6 +24,7 @@
     "sveltedoc-parser": "^3.0.4"
   },
   "dependencies": {
-    "@terminusdb/terminusdb-client": "^3.0.6"
+    "@terminusdb/terminusdb-client": "^3.0.6",
+    "docco-next": "^0.9.3"
   }
 }
