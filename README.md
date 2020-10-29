@@ -60,7 +60,7 @@ The SPA runs in the browser and uses TerminusDB as the backend, as TerminusDB is
 
 ### So, how does that initdb bit do its thing?
 
-We will only give a few important examples from the initdb script here, you can see the entire script with comments here: [util/initdb.js](https://github.com/dmytri/terminusdb-todoapp/tree/9809d2f4d7d28762d9d46175bc38a54db0c8dd11/util/initdb.js)
+We will only give a few important examples from the initdb script here, you can see the entire script with comments here: [util/initdb.js](util/initdb.js)
 
 First we use the JavaScript SDK to connect to the Database.
 
@@ -149,7 +149,7 @@ Thinking in terms of triples is one of the two major differences in how Terminat
 
 ### Ok, we created the DB and an example Todo, but how does the app work?
 
-Once again, we will just cover some important examples, you can find the complete script here [src/terminusdb.js](https://github.com/dmytri/terminusdb-todoapp/tree/9809d2f4d7d28762d9d46175bc38a54db0c8dd11/src/terminusdb.js)
+Once again, we will just cover some important examples, you can find the complete script here [src/terminusdb.js](src/terminusdb.js)
 
 Also, the JavaScript SDK has convenience functions that allow you to interact with documents and their properties in a simpler way, often like other graph or document databases, we will not use these. We're not trying to be mean or anything, we just really want you to understand this triple business, oh, and unification, more on that in a bit.
 
