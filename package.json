@@ -2,7 +2,8 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "docs": "jsdoc -c jsdoc.json -d docs src/",
+    "docs": "gitbook build",
+    "docs:serve": "gitbook serve",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
