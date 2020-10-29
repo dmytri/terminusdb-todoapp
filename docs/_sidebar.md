@@ -5,3 +5,4 @@
 ## API
 
 - [terminusdb.js](api/terminusdb.js.md)
+- [main.js](api/main.js.md)
