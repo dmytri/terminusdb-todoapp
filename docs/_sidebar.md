@@ -1,5 +1,7 @@
 - Tutorialog
   - [README.md](README.md)
+  - [This is random](random.md)
+
 - Annotated Source
   - [main.js](api/src/main.md)
   - [terminusdb.js](api/src/terminusdb.md)
