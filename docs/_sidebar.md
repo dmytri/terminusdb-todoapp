@@ -24,4 +24,3 @@
     - [TodoAlteredCompleted](api/todomvcdb.js?id=todomvcdbtodoalteredcompleted-object)
     - [callback](api/todomvcdb.js?id=todomvcdbcallback-function)
     
-
