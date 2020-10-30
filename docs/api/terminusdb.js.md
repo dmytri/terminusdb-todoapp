@@ -3,25 +3,11 @@
 ## TerminusDB
 TerminusDB TodoMVC Methods
 
-
-* [TerminusDB](#module_TerminusDB)
-    * [~create(todo)](#module_TerminusDB..create)
-    * [~alter(data)](#module_TerminusDB..alter)
-    * [~remove(data)](#module_TerminusDB..remove)
-    * [~toggle(data)](#module_TerminusDB..toggle)
-    * [~clear()](#module_TerminusDB..clear)
-    * [~state(callback)](#module_TerminusDB..state)
-    * [~TodoCreated](#module_TerminusDB..TodoCreated) : <code>Object</code>
-    * [~TodoAlteredTitle](#module_TerminusDB..TodoAlteredTitle) : <code>Object</code>
-    * [~TodoAlteredCompleted](#module_TerminusDB..TodoAlteredCompleted) : <code>Object</code>
-    * [~callback](#module_TerminusDB..callback) : <code>function</code>
-
 <a name="module_TerminusDB..create"></a>
 
 ### TerminusDB~create(todo)
 Create Todo
 
-**Kind**: inner method of [<code>TerminusDB</code>](#module_TerminusDB)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -39,59 +25,80 @@ create({
 ### TerminusDB~alter(data)
 Alter Todo
 
-**Kind**: inner method of [<code>TerminusDB</code>](#module_TerminusDB)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | data | <code>TodoAlteredTitle</code> \| <code>TodoAlteredCompleted</code> | Todo Title or Completed Alteration |
 
+**Example**  
+```js
+alter({id: 'doc:todo1', key: 'title', value: 'walk the dinasaur'})
+alter({id: 'doc:todo1', key: 'completed', value: true})
+```
 <a name="module_TerminusDB..remove"></a>
 
 ### TerminusDB~remove(data)
 Remove Todo
 
-**Kind**: inner method of [<code>TerminusDB</code>](#module_TerminusDB)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | data | <code>Object</code> |  |
 | data.id | <code>string</code> | Todo ID |
 
+**Example**  
+```js
+remove({id: 'doc:todo1'})
+```
 <a name="module_TerminusDB..toggle"></a>
 
 ### TerminusDB~toggle(data)
 Toggle All Todos
 
-**Kind**: inner method of [<code>TerminusDB</code>](#module_TerminusDB)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | data | <code>Object</code> |  |
 | data.completed | <code>boolean</code> | Todo completed |
 
+**Example**  
+```js
+toggle({completed: true})
+```
 <a name="module_TerminusDB..clear"></a>
 
 ### TerminusDB~clear()
 Clear Completed Todos
 
-**Kind**: inner method of [<code>TerminusDB</code>](#module_TerminusDB)  
+**Example**  
+```js
+clear()
+```
 <a name="module_TerminusDB..state"></a>
 
 ### TerminusDB~state(callback)
 Get all Todos
 
-**Kind**: inner method of [<code>TerminusDB</code>](#module_TerminusDB)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | callback | <code>callback</code> | callback to recieve state |
 
+**Example**  
+```js
+let todos = []
+state((err, data) => {
+  if (err) console.log('read error', err)
+  else {
+    todos = data
+  }
+})
+```
 <a name="module_TerminusDB..TodoCreated"></a>
 
 ### TerminusDB~TodoCreated : <code>Object</code>
 Todo Created
 
-**Kind**: inner typedef of [<code>TerminusDB</code>](#module_TerminusDB)  
 **Properties**
 
 | Name | Type | Description |
@@ -104,25 +111,24 @@ Todo Created
 ### TerminusDB~TodoAlteredTitle : <code>Object</code>
 Todo Title Altered
 
-**Kind**: inner typedef of [<code>TerminusDB</code>](#module_TerminusDB)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
+| TodoAlteredTitle.id | <code>string</code> | Todo Document Id to Alter |
 | TodoAlteredTitle.key | <code>&#x27;title&#x27;</code> | string "title" |
 | TodoAlteredTitle.value | <code>string</code> | Todo Title |
-| TodoAlteredTitle.id | <code>string</code> | Todo Document Id to Alter |
 
 <a name="module_TerminusDB..TodoAlteredCompleted"></a>
 
 ### TerminusDB~TodoAlteredCompleted : <code>Object</code>
 Todo Completed Altered
 
-**Kind**: inner typedef of [<code>TerminusDB</code>](#module_TerminusDB)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
+| TodoAlteredTitle.id | <code>string</code> | Todo Document Id to Alter |
 | TodoAlteredCompleted.key | <code>&#x27;completed&#x27;</code> | string "completed" |
 | TodoAlteredCompleted.value | <code>boolean</code> | Todo Completed |
 | TodoAlteredCompleted.id | <code>string</code> | Todo Document Id to Alter |
@@ -132,7 +138,6 @@ Todo Completed Altered
 ### TerminusDB~callback : <code>function</code>
 Response Callback
 
-**Kind**: inner typedef of [<code>TerminusDB</code>](#module_TerminusDB)  
 
 | Param | Type | Description |
 | --- | --- | --- |

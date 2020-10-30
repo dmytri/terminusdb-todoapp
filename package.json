@@ -5,12 +5,18 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
+    "mkdocs:src": "docco src/main.js -l plain -x md -o docs/api",
+    "mkdocs:api": "jsdoc2md --partial scope.hbs member-index.hbs --files src/terminusdb.js > docs/api/terminusdb.js.md",
+    "mkdocs": "npm run mkdocs:api && npm run mkdocs:src",
+    "docs": "docsify serve docs",
     "initdb": "node util/initdb.js"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
+    "docco-next": "^0.9.3",
+    "docsify-cli": "^4.4.1",
     "jsdoc-to-markdown": "^6.0.1",
     "rollup": "^2.3.4",
     "rollup-plugin-copy": "^3.3.0",
@@ -24,7 +30,6 @@
     "sveltedoc-parser": "^3.0.4"
   },
   "dependencies": {
-    "@terminusdb/terminusdb-client": "^3.0.6",
-    "docco-next": "^0.9.3"
+    "@terminusdb/terminusdb-client": "^3.0.6"
   }
 }

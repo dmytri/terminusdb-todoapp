@@ -52,13 +52,14 @@ function create (todo) {
 
 /**
  * @typedef {Object} TodoAlteredTitle Todo Title Altered
+ * @property {string} TodoAlteredTitle.id Todo Document Id to Alter
  * @property {'title'} TodoAlteredTitle.key string "title"
  * @property {string} TodoAlteredTitle.value Todo Title
- * @property {string} TodoAlteredTitle.id Todo Document Id to Alter
  */
 
 /**
  * @typedef {Object} TodoAlteredCompleted Todo Completed Altered
+ * @property {string} TodoAlteredTitle.id Todo Document Id to Alter
  * @property {'completed'} TodoAlteredCompleted.key string "completed"
  * @property {boolean} TodoAlteredCompleted.value Todo Completed
  * @property {string} TodoAlteredCompleted.id Todo Document Id to Alter
@@ -66,8 +67,11 @@ function create (todo) {
 
 /**
  * Alter Todo
- *
  * @param {(TodoAlteredTitle|TodoAlteredCompleted)} data Todo Title or Completed Alteration
+ * @example
+ *
+ * alter({id: 'doc:todo1', key: 'title', value: 'walk the dinasaur'})
+ * alter({id: 'doc:todo1', key: 'completed', value: true})
  */
 function alter (data) {
   console.log('alter', data)
@@ -77,12 +81,10 @@ function alter (data) {
     .add_triple(data.id, data.key,
       data.key === 'completed'
         ? Q.literal(data.value, 'boolean')
-        : Q.literal(data.value, 'string')
-    )
-  )
-    .catch((error) => {
-      console.log('alter error', error, data)
-    })
+        : Q.literal(data.value, 'string'))
+  ).catch((error) => {
+    console.log('alter error', error, data)
+  })
 }
 
 /**
@@ -90,6 +92,9 @@ function alter (data) {
  *
  * @param {Object} data
  * @param {string} data.id Todo ID
+ * @example
+ *
+ * remove({id: 'doc:todo1'})
 */
 function remove (data) {
   DB.query(Q
@@ -103,6 +108,9 @@ function remove (data) {
  *
  * @param {Object} data
  * @param {boolean} data.completed Todo completed
+ * @example
+ *
+ * toggle({completed: true})
 */
 
 function toggle (data) {
@@ -116,6 +124,10 @@ function toggle (data) {
 
 /**
  * Clear Completed Todos
+ *
+ * @example
+ *
+ * clear()
 */
 function clear () {
   DB.query(Q
@@ -137,6 +149,15 @@ function clear () {
  * Get all Todos
  *
  * @param {callback} callback callback to recieve state
+ * @example
+ *
+ * let todos = []
+ * state((err, data) => {
+ *   if (err) console.log('read error', err)
+ *   else {
+ *     todos = data
+ *   }
+ * })
  */
 
 function state (callback) {

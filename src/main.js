@@ -1,6 +1,6 @@
 /**
  * @module main
- * @description Create a svelte store with TerminusDB
+ * @description Create a Svelte store with TerminusDB
  */
 
 // Import Svelte writable store
