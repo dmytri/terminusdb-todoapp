@@ -1,11 +1,11 @@
-<a name="module_TerminusDB"></a>
+<a name="module_TodoMVCDB"></a>
 
-## TerminusDB
-TerminusDB TodoMVC Methods
+## TodoMVCDB
+TodoMVC DB Methods
 
-<a name="module_TerminusDB..create"></a>
+<a name="module_TodoMVCDB..create"></a>
 
-### TerminusDB~create(todo)
+### TodoMVCDB~create(todo)
 Create Todo
 
 
@@ -20,9 +20,9 @@ create({
  title: "Taste TerminusDB"
 })
 ```
-<a name="module_TerminusDB..alter"></a>
+<a name="module_TodoMVCDB..alter"></a>
 
-### TerminusDB~alter(data)
+### TodoMVCDB~alter(data)
 Alter Todo
 
 
@@ -35,9 +35,9 @@ Alter Todo
 alter({id: 'doc:todo1', key: 'title', value: 'walk the dinasaur'})
 alter({id: 'doc:todo1', key: 'completed', value: true})
 ```
-<a name="module_TerminusDB..remove"></a>
+<a name="module_TodoMVCDB..remove"></a>
 
-### TerminusDB~remove(data)
+### TodoMVCDB~remove(data)
 Remove Todo
 
 
@@ -50,9 +50,9 @@ Remove Todo
 ```js
 remove({id: 'doc:todo1'})
 ```
-<a name="module_TerminusDB..toggle"></a>
+<a name="module_TodoMVCDB..toggle"></a>
 
-### TerminusDB~toggle(data)
+### TodoMVCDB~toggle(data)
 Toggle All Todos
 
 
@@ -65,18 +65,18 @@ Toggle All Todos
 ```js
 toggle({completed: true})
 ```
-<a name="module_TerminusDB..clear"></a>
+<a name="module_TodoMVCDB..clear"></a>
 
-### TerminusDB~clear()
+### TodoMVCDB~clear()
 Clear Completed Todos
 
 **Example**  
 ```js
 clear()
 ```
-<a name="module_TerminusDB..state"></a>
+<a name="module_TodoMVCDB..state"></a>
 
-### TerminusDB~state(callback)
+### TodoMVCDB~state(callback)
 Get all Todos
 
 
@@ -94,9 +94,9 @@ state((err, data) => {
   }
 })
 ```
-<a name="module_TerminusDB..TodoCreated"></a>
+<a name="module_TodoMVCDB..TodoCreated"></a>
 
-### TerminusDB~TodoCreated : <code>Object</code>
+### TodoMVCDB~TodoCreated : <code>Object</code>
 Todo Created
 
 **Properties**
@@ -106,9 +106,9 @@ Todo Created
 | TodoCreated.id | <code>string</code> | Todo ID |
 | TodoCreated.title | <code>string</code> | Todo Title |
 
-<a name="module_TerminusDB..TodoAlteredTitle"></a>
+<a name="module_TodoMVCDB..TodoAlteredTitle"></a>
 
-### TerminusDB~TodoAlteredTitle : <code>Object</code>
+### TodoMVCDB~TodoAlteredTitle : <code>Object</code>
 Todo Title Altered
 
 **Properties**
@@ -119,9 +119,9 @@ Todo Title Altered
 | TodoAlteredTitle.key | <code>&#x27;title&#x27;</code> | string "title" |
 | TodoAlteredTitle.value | <code>string</code> | Todo Title |
 
-<a name="module_TerminusDB..TodoAlteredCompleted"></a>
+<a name="module_TodoMVCDB..TodoAlteredCompleted"></a>
 
-### TerminusDB~TodoAlteredCompleted : <code>Object</code>
+### TodoMVCDB~TodoAlteredCompleted : <code>Object</code>
 Todo Completed Altered
 
 **Properties**
@@ -133,9 +133,9 @@ Todo Completed Altered
 | TodoAlteredCompleted.value | <code>boolean</code> | Todo Completed |
 | TodoAlteredCompleted.id | <code>string</code> | Todo Document Id to Alter |
 
-<a name="module_TerminusDB..callback"></a>
+<a name="module_TodoMVCDB..callback"></a>
 
-### TerminusDB~callback : <code>function</code>
+### TodoMVCDB~callback : <code>function</code>
 Response Callback
 
 

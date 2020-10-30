@@ -1,7 +1,11 @@
 /**
- * @module TerminusDB
- * @description TerminusDB TodoMVC Methods
+ * @module TodoMVCDB
+ * @description TodoMVC DB Methods
  */
+
+// **TerminusDB** is a decentralized revision control database.
+// This module provides methods for the TodoMVC app which store the todo data
+// in Terminusdb. All TerminusDB related code examples are here.
 
 // Require TerminusDB Client
 const Client = require('@terminusdb/terminusdb-client')
@@ -40,6 +44,10 @@ const Q = Client.WOQL
  *  title: "Taste TerminusDB"
  * })
  */
+// The query method accepts a query builder, which constructs the query with a
+// fluent style by chaining statements. In the following function add three
+// tripples which represent the todo document and it's two properties, title
+// and completed. 
 function create (todo) {
   DB.query(Q
     .add_triple(todo.id, 'type', 'scm:Todo')
@@ -73,8 +81,11 @@ function create (todo) {
  * alter({id: 'doc:todo1', key: 'title', value: 'walk the dinasaur'})
  * alter({id: 'doc:todo1', key: 'completed', value: true})
  */
+// Here we use a triple statment to find the todo whith a given id, then
+// delete either updated it's title or it's completed propery, depending on
+// the value of the key that is passed.
+// updating a triple in TerminusDB means deleting it and adding a new one.
 function alter (data) {
-  console.log('alter', data)
   DB.query(Q
     .triple(data.id, data.key, 'v:Value')
     .delete_triple(data.id, data.key, 'v:Value')
@@ -96,6 +107,7 @@ function alter (data) {
  *
  * remove({id: 'doc:todo1'})
 */
+// Here we find a triple with a given Id and delete it.
 function remove (data) {
   DB.query(Q
     .triple(data.id, 'v:Predicate', 'v:Object')
@@ -112,7 +124,8 @@ function remove (data) {
  *
  * toggle({completed: true})
 */
-
+// Here we look for all todos that do not have the completed value that is
+// passed to the function and set them to this value.
 function toggle (data) {
   console.log('data', data)
   DB.query(Q
@@ -129,6 +142,7 @@ function toggle (data) {
  *
  * clear()
 */
+// This function deletes all Todos which have been completed.
 function clear () {
   DB.query(Q
     .triple('v:Doc', 'completed', Q.literal(true, 'boolean'))
@@ -159,7 +173,8 @@ function clear () {
  *   }
  * })
  */
-
+// This function retrieves all todos from the database and passes them to a
+// callback
 function state (callback) {
   DB.query(Q
     .triple('v:Doc', 'type', 'scm:Todo')
@@ -173,12 +188,10 @@ function state (callback) {
         completed: item.Completed === 'system:unknown'
           ? false
           : item.Completed['@value'] === 'true'
-      }))
-    )
+      })))
+  }).catch((error) => {
+    callback(error)
   })
-    .catch((error) => {
-      callback(error)
-    })
 }
 
 // Export database methods

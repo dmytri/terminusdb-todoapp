@@ -1,20 +1,27 @@
-- Tutorialog
-  - [README.md](README.md)
+- [README.md](README.md)
+  - [Install Todo App](README?id=install-todo-app)
+  - [Create a Database](README?id=create-database)
+  - [Create a Schema](README?id=create-schema)
+  - [Add example Todos](README?id=add-example-todo-items)
+  - [Triples](README?id=triples)
+  - [Reading the Database](README?id=reading-from-the-database)
+  - [Unification](README?id=unification)
+  - [Writing to the Database](README?id=writing-to-the-database)
 - Annotated Source
+  - [terminusdb.js](api/src/terminusdb.md)
   - [main.js](api/src/main.md)
-- API Documentation
-  - [terminusdb.js](api/terminusdb.js.md)
-    - Functions
-      - [create](api/terminusdb.js?id=terminusdbcreatetodo)
-      - [alter](api/terminusdb.js?id=terminusdbalterdata)
-      - [remove](api/terminusdb.js?id=terminusdbremovedata)
-      - [toggle](api/terminusdb.js?id=terminusdbtoggledata)
-      - [clear](api/terminusdb.js?id=terminusdbclear)
-      - [state](api/terminusdb.js?id=terminusdbstatecallback)
-    - Types
-      - [TodoCreated](api/terminusdb.js?id=terminusdbtodocreated-object) 
-      - [TodoAlteredTitle](api/terminusdb.js?id=terminusdbtodoalteredtitle-object)
-      - [TodoAlteredCompleted](api/terminusdb.js?id=terminusdbtodoalteredcompleted-object)
-      - [callback](api/terminusdb.js?id=terminusdbcallback-function)
-      
+- [TodoMVC DB API](api/todomvcdb.js.md)
+  - Functions
+    - [create](api/todomvcdb.js?id=todomvcdbcreatetodo)
+    - [alter](api/todomvcdb.js?id=todomvcdbalterdata)
+    - [remove](api/todomvcdb.js?id=todomvcdbremovedata)
+    - [toggle](api/todomvcdb.js?id=todomvcdbtoggledata)
+    - [clear](api/todomvcdb.js?id=todomvcdbclear)
+    - [state](api/todomvcdb.js?id=todomvcdbstatecallback)
+  - Types
+    - [TodoCreated](api/todomvcdb.js?id=todomvcdbtodocreated-object) 
+    - [TodoAlteredTitle](api/todomvcdb.js?id=todomvcdbtodoalteredtitle-object)
+    - [TodoAlteredCompleted](api/todomvcdb.js?id=todomvcdbtodoalteredcompleted-object)
+    - [callback](api/todomvcdb.js?id=todomvcdbcallback-function)
+    
 

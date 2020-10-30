@@ -6,8 +6,8 @@
     "dev": "rollup -c -w",
     "start": "sirv public",
     "mkdocs:src": "docco src/*.js -l plain -x md -o docs/api",
-    "mkdocs:api": "jsdoc2md --partial scope.hbs member-index.hbs --files src/terminusdb.js > docs/api/terminusdb.js.md",
-    "mkdocs": "npm run mkdocs:api && npm run mkdocs:src",
+    "mkdocs:api": "jsdoc2md --partial scope.hbs member-index.hbs --files src/terminusdb.js > docs/api/todomvcdb.js.md",
+    "mkdocs": "cp README.md docs/ && npm run mkdocs:api && npm run mkdocs:src",
     "docs": "docsify serve docs",
     "initdb": "node util/initdb.js"
   },
