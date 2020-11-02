@@ -24,7 +24,9 @@ right now, so you can just minimize it.
 Once TerminusDB is running, add the DB and Schema.
 
 ```bash
-$ npm run initdb
+$ npm install && npm run initdb
+
+[...miles of scrolling console spew...]
 
 > svelte-app@1.0.0 initdb /home/dk/Work/TerminusDB/terminusdb-todoapp
 > node util/initdb.js
@@ -41,9 +43,9 @@ $ npm run initdb
 Now npm install and run the app.
 
 ```bash
-$ npm install && npm run dev
+$ npm run dev
 
-[...miles of scrolling console spew...]
+[...]
 
  Your application is ready~! 🚀
 
