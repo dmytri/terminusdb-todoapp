@@ -300,9 +300,9 @@ triple('doc:todo1', 'scm:title', 'v:Doc')
 The solution to this statement will bind the string which contains the title to
 the variable `v:Doc`
 
-So, the first two "arguments" \(they're not arguments\), are kinda _like_
-arguments, and the third "argument" is kinda _like_ a return value \(it's not
-a return value\).
+So, the first two "arguments" (they're not arguments), are kinda _like_
+arguments, and the third "argument" is kinda like a return value (it's not
+a return value).
 
 Now, say we know we have a `Todo` with the title "Taste TerminusDB", but we
 don't know the document Id.
@@ -327,8 +327,8 @@ It feels like the inputs and outputs just move around. But it's more
 complicated than that. These are not inputs and outputs, they are statements
 and solutions.
 
-You say what _you know_ and the database finds _all possible solutions_ where
-your statement is true.
+You say what you know and the database finds all possible solutions where your
+statement is true.
 
 A few of you are saying, oh, like in
 [Prolog](https://en.wikipedia.org/wiki/Unification_%28computer_science%29).
@@ -344,7 +344,7 @@ Stay with me here, this is where it really gets trippy.
 
 Let's take a look at another function from `terminusdb.js`, the `toggle`
 function. This function is given a boolean value passed as `data.completed` and
-sets all `completed` on all `Todos` to this value.
+sets `completed` on all `Todos` to this value.
 
 This is the query that is used:
 
@@ -356,23 +356,27 @@ DB.query(Q
 )
 ```
 
-So, let's say that the `toggle` function was called with data.completed having a value of `true`.
+So, let's say that the `toggle` function was called with data.completed having
+a value of `true`.
 
-The first triple statement solves for all subjects \(all `Todos` in our case\)
-in to database with a predicate `completed` with an object \(think value\) that
-is `false` \(`!data.completed`\), and then binds the document d of each of
-these to the variable `v:Doc`.
+The first triple statement solves for all subjects (all `Todos` in our case) in
+to database with a predicate `completed` with an object (think value) that is
+`false` (`!data.completed`), and then binds the document Id of each of these to
+the variable `v:Doc`.
 
-We now have a list of all Todos that are not completed so we can set them to be
-comepleted.
+We now have a list of all Todos that are not completed so that we can set them
+to be comepleted.
 
-The next statement, delete\_triple, receives all the document Ids from first
-statement and deletes each of them. Remember that one triple is a property
-here, so it's not deleting the `Todo`, just it's `completed` property. Also
-note that because our Schema has a cardinality of 1 for  `completed`, if we our
-query only had these two statements it would fail, because a `Todo` can not
-have zero titles, but since we add `completed` with the value
-`true`\(`data.completed`\)in the third statement, an `add_triple`, the query is
+The next statement, delete_triple, receives all the document Ids from first
+statement and deletes each of them.
+
+Remember that one triple is a property here, so it's not deleting the `Todo`,
+just its `completed` property.
+
+Also note that because our Schema has a cardinality of 1 for `completed`, if
+our query only had these two statements it would fail, because a `Todo` can not
+have no completed property. Since we add `completed` with the value `true`
+(`data.completed`) in the third statement, an `add_triple`, the query is
 successful.
 
 This is a demonstration of unification. The value of 'v:Doc' is solved for all
@@ -409,9 +413,9 @@ API makes it easy to use from any stack, even a frontend web stack.
 
 However, what will really accelerate your development are it's collaboration
 features. The ability to clone, fork, branch and merge data, and the fact that
-your have revision control means that so much hard stuff becomes easy.
+you have revision control means that so much hard stuff becomes easy.
 
-Take for example, adding an undo feature. With a normal database you need to
+Take, for example, adding an undo feature. With a normal database you need to
 build your own versioning into your data model, turning rows into journals.
 With TerminusDB you have versioning out of the box, you can just revert
 a commit and viola, you have undo, and redo, and you even have proof for your
@@ -425,12 +429,12 @@ a different manager.
 Once again, with another database this workflow would need to be added to your
 data model, you would need to add fields and classes or tables to contain what
 workflow stage each todo was in, and if the workflow changed, as it always does
-in the real world, sometimes from task task, your data model would also need to
-change, this becomes brittle fast.
+in the real world, sometimes from task to task, your data model would also need
+to change, this becomes brittle fast.
 
 With TerminusDB you could model your workflow with branches, where assignments
-could be added to a managers branch, merged into an assignees branch, then
-merged into a approvers branch, etc. Branches could be made for ad-hoc
+could be added to a manager's branch, merged into an assignee's branch, then
+merged into a approver's branch, etc. Branches could be made for ad-hoc
 situations that required a different workflow, and none the less all Todos
 could eventually be merged into a common "done" branch, all with no workflow in
 the data model itself.
